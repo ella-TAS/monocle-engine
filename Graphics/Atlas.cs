@@ -60,7 +60,7 @@ namespace Monocle {
 
                     foreach (XmlElement tex in at) {
                         var texturePath = tex.Attr("n", "");
-                        var fileStream = new FileStream(Path.Combine(Path.GetDirectoryName(path), texturePath + ".png"), FileMode.Open, FileAccess.Read);
+                        var fileStream = TitleContainer.OpenStream(Path.Combine(Engine.Instance.Content.RootDirectory, Path.GetDirectoryName(path), texturePath + ".png"));
                         var texture = Texture2D.FromStream(Engine.Instance.GraphicsDevice, fileStream);
                         fileStream.Close();
 
